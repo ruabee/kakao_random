@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>선착순 선물 이벤트</title>
+  <meta name="description" content="깜짝 선물이 도착했어요. 지금 바로 확인해보세요!" />
+
+  <!-- 카카오톡 미리보기 -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="선착순 선물 쏜다! 지금 확인하기" />
   <meta property="og:description" content="깜짝 선물이 도착했어요. 지금 바로 확인해보세요!" />
-  <meta property="og:image" content="https://네주소.vercel.app/preview.png" />
-  <meta property="og:url" content="https://네주소.vercel.app/" />
-</head>
+  <meta property="og:image" content="https://kakao-random.vercel.app/kakao-preview.png" />
+  <meta property="og:url" content="https://kakao-random.vercel.app/" />
+
+  <!-- 선택 -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="선착순 선물 쏜다! 지금 확인하기" />
+  <meta name="twitter:description" content="깜짝 선물이 도착했어요. 지금 바로 확인해보세요!" />
+  <meta name="twitter:image" content="https://네주소.vercel.app/kakao-preview.png" />
 
   <style>
     * {
@@ -63,8 +71,7 @@
       pointer-events: auto;
     }
 
-    .suspense-img,
-    .reveal-img {
+    .suspense-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -91,7 +98,7 @@
       padding: 10px 16px;
       border-radius: 999px;
       margin-bottom: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     }
 
     .title {
@@ -126,7 +133,7 @@
       font-weight: 800;
       padding: 16px 24px;
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
     .sub {
@@ -140,13 +147,13 @@
       bottom: 26px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(255,255,255,0.92);
+      background: rgba(255, 255, 255, 0.92);
       color: #111;
       font-size: 15px;
       font-weight: 700;
       padding: 10px 14px;
       border-radius: 999px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
     }
 
     @media (max-width: 480px) {
@@ -170,23 +177,25 @@
   </style>
 </head>
 <body>
-  <section id="suspensePage">
-    <img
-      class="suspense-img"
-      src="./suspense.png"
-      alt="두근두근, 과연 선물의 주인공이 될 수 있을까요?"
-    />
+  <div class="screen">
+    <!-- 첫 화면 -->
+    <section id="suspensePage" class="page visible">
+      <img
+        class="suspense-img"
+        src="./suspense.png"
+        alt="두근두근, 과연 선물의 주인공이 될 수 있을까요?"
+      />
       <div class="count" id="countText">3초 뒤 결과 공개...</div>
     </section>
 
-    <!-- 두 번째 화면: 만우절 공개 -->
+    <!-- 두 번째 화면 -->
     <section id="revealPage" class="page hidden">
       <div class="reveal-wrap">
         <div class="badge">짜잔</div>
         <div class="emoji">🎉😜</div>
         <h1 class="title">만우절 장난!</h1>
         <p class="desc">
-          선물인 줄 알았죠?  
+          선물인 줄 알았죠?<br />
           해피 만우절입니다 💛
         </p>
         <a class="btn" href="javascript:location.reload()">다시 보기</a>
@@ -204,6 +213,7 @@
 
     const timer = setInterval(() => {
       seconds--;
+
       if (seconds > 0) {
         countText.textContent = `${seconds}초 뒤 결과 공개...`;
       } else {
