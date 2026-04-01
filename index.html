@@ -7,10 +7,11 @@
   <title>선착순 선물 이벤트</title>
   <meta name="description" content="EXIT를 위한 깜짝 선물이 도착했어요. 지금 바로 확인해보세요!" />
 
+  <!-- 카카오톡 미리보기 -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="선착순 선물 쏜다! 지금 확인하기" />
   <meta property="og:description" content="EXIT를 위한 깜짝 선물이 도착했어요. 지금 바로 확인해보세요!" />
-  <meta property="og:image" content="https://kakao-random.vercel.app/kakaor.png" />
+  <meta property="og:image" content="https://kakao-random.vercel.app/kakaoall.png" />
   <meta property="og:url" content="https://kakao-random.vercel.app/" />
 
   <style>
@@ -71,6 +72,70 @@
       display: block;
     }
 
+    .reveal-wrap {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #fff7c2 0%, #ffe500 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .badge {
+      font-size: 18px;
+      font-weight: 800;
+      color: #222;
+      background: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .title {
+      font-size: 42px;
+      line-height: 1.2;
+      font-weight: 900;
+      color: #111;
+      margin: 0 0 14px;
+      letter-spacing: -1.6px;
+    }
+
+    .desc {
+      font-size: 20px;
+      line-height: 1.7;
+      color: #333;
+      margin: 0 0 28px;
+      word-break: keep-all;
+    }
+
+    .emoji {
+      font-size: 84px;
+      line-height: 1;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #111;
+      color: #fff;
+      font-size: 19px;
+      font-weight: 800;
+      padding: 16px 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .sub {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #666;
+    }
+
     .count {
       position: absolute;
       bottom: 26px;
@@ -85,102 +150,26 @@
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
     }
 
-    /* 두 번째 화면 */
-    .reveal-page {
-      background: #ffe500;
-      justify-content: space-between;
-    }
-
-    .reveal-top {
-      width: 100%;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 20px 10px;
-    }
-
-    .reveal-top img {
-      width: 100%;
-      max-width: 420px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .bottom-card {
-      width: 100%;
-      background: #ffffff;
-      border-radius: 26px 26px 0 0;
-      padding: 22px 18px 20px;
-      box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.06);
-    }
-
-    .bottom-text {
-      margin: 0 0 18px;
-      font-size: 18px;
-      line-height: 1.5;
-      font-weight: 700;
-      color: #333;
-      word-break: keep-all;
-    }
-
-    .detail-btn {
-      width: 100%;
-      border: none;
-      background: #f2f2f2;
-      color: #222;
-      font-size: 18px;
-      font-weight: 700;
-      padding: 18px 16px;
-      border-radius: 14px;
-      text-align: center;
-      cursor: pointer;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
-    }
-
-    .detail-btn:active {
-      transform: scale(0.99);
-    }
-
-    .brand-row {
-      margin-top: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #9c9c9c;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .gift-icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 5px;
-      background: #fff5c9;
-      border: 1px solid #e8d77b;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
 
     @media (max-width: 480px) {
-      .bottom-text {
-        font-size: 16px;
+      .title {
+        font-size: 34px;
       }
 
-      .detail-btn {
+      .desc {
+        font-size: 18px;
+      }
+
+      .emoji {
+        font-size: 72px;
+      }
+
+      .btn {
         font-size: 17px;
-        padding: 16px 14px;
-      }
-
-      .brand-row {
-        font-size: 14px;
+        padding: 15px 22px;
       }
     }
   </style>
-</head>
 <body>
   <div class="screen">
     <!-- 첫 화면 -->
@@ -194,25 +183,17 @@
     </section>
 
     <!-- 두 번째 화면 -->
-    <section id="revealPage" class="page hidden reveal-page">
-      <div class="reveal-top">
-        <img src="./suspense.png" alt="랜덤 선물 안내 이미지" />
-      </div>
-
-      <div class="bottom-card">
-        <p class="bottom-text">
-          EXIT님이 랜덤 6명에게 선물을 보내셨습니다.
-          행운의 주인공은?
+    <section id="revealPage" class="page hidden">
+      <div class="reveal-wrap">
+        <div class="badge">짜잔</div>
+        <div class="emoji">🎉😜</div>
+        <h1 class="title">만우절 장난!</h1>
+        <p class="desc">
+          선물인 줄 알았죠?<br />
+          해피 만우절입니다 💛
         </p>
-
-        <button class="detail-btn" onclick="location.reload()">
-          자세히보기
-        </button>
-
-        <div class="brand-row">
-          <span class="gift-icon">🎁</span>
-          <span>카카오톡 선물하기</span>
-        </div>
+        <a class="btn" href="javascript:location.reload()">다시 보기</a>
+        <div class="sub">메롱 😎</div>
       </div>
     </section>
   </div>
